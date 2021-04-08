@@ -1,7 +1,7 @@
 def create_category():
     name = input('Informe um nome para a sua categoria: ')
     description = input('Informe uma descrição para esta categoria: ')
-    register_category = f'{name} {description}'
+    register_category = f'{name},{description}'
     data_category(register_category)
 
 
@@ -18,5 +18,5 @@ def list_of_category():
     count = 0
     for category in list_categories:
         count += 1
-        items_category = category.split()
+        items_category = category.split(',')
         print(f'Código: {count}\nNome: {items_category[0]}\nDescrição: {items_category[1]}\n')
