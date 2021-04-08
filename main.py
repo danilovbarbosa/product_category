@@ -10,10 +10,10 @@ def start():
         -------------------------
         Selecione a opção deseja:
         -------------------------          
-        1- Cadastrar produto.
-        2- Cadastrar categoria.
-        3- Listar produtos.
-        4- Listar categorias.
+        1- Cadastrar categoria.
+        2- Listas categorias.
+        3- Cadastrar produto.
+        4- Listar produtos.
         -------------------------
         Número: """))
         if number in range(1, 5):
@@ -27,14 +27,13 @@ def start():
 
 def get_function_for_number(number):
     if number == 1:
-        return ''
-    elif number == 2:
-        return ''
-    elif number == 3:
         create_category()
-    elif number == 4:
+    elif number == 2:
         list_of_category()
-    return ''
+    elif number == 3:
+        return ''
+    elif number == 4:
+        return ''
 
 
 def controller():
