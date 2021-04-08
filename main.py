@@ -2,6 +2,7 @@ from os import path
 import sys
 sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 from category import *
+from product import *
 
 
 def start():
@@ -31,9 +32,9 @@ def get_function_for_number(number):
     elif number == 2:
         list_of_category()
     elif number == 3:
-        return ''
+        create_product()
     elif number == 4:
-        return ''
+        list_of_product()
 
 
 def controller():
