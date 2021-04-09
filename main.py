@@ -5,17 +5,22 @@ from category import *
 from product import *
 
 
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
+
+
+
+
 def start():
     try:
         number = int(input(f"""
-        -------------------------
-        Selecione a opção deseja:
-        -------------------------          
-        1- Cadastrar categoria.
-        2- Listas categorias.
-        3- Cadastrar produto.
-        4- Listar produtos.
-        -------------------------
+            -------------------------
+            Selecione a opção deseja:
+            -------------------------          
+            1- Cadastrar categoria.
+            2- Listas categorias.
+            3- Cadastrar produto.
+            4- Listar produtos.
+            -------------------------
         Número: """))
         if number in range(1, 5):
             return number
@@ -39,6 +44,7 @@ def get_function_for_number(number):
 
 def controller():
     get_function_for_number(start())
+
 
 
 if __name__ == '__main__':
