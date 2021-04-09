@@ -29,7 +29,7 @@ def list_of_category():
         all_categories = session.query(Category).all()
         print('\nCATEGORIAS:\n')
         for row in all_categories:
-            print ("Nome:",row.name, "Descrição:",row.description)
+            print ("ID:", row.id, "Nome:",row.name, "Descrição:",row.description)
     except:
         raise Exception("Erro, ao listar categorias")
     finally:
