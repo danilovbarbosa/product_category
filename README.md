@@ -17,6 +17,7 @@ Construído sobre uma plataforma Python 3.
 - Crie e acesse um ambiente virtual: `python -m venv venv`
 - Clone o repositório e acesse a pasta criada
 - Execute: `pip instal requirements.txt`
+- Execute o projeto para criar o BD (SQLite).
 
 ### Executando
 
@@ -26,4 +27,4 @@ Construído sobre uma plataforma Python 3.
 
 
 ## Autores:
-- Danilo e Victor.
+- Eduardo e Danilo.
