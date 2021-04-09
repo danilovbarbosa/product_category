@@ -31,7 +31,7 @@ def list_of_category():
         for row in all_categories:
             print ("Nome:",row.name, "Descrição:",row.description)
     except:
-        raise Exception("Erro, ao adicionar categoria")
+        raise Exception("Erro, ao listar categorias")
     finally:
         session.close()
 
