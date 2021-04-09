@@ -18,6 +18,9 @@ class Category(Base):
     name = Column(String)
     description = Column(String)
 
+    def __str__():
+        print(name)
+
 
 class Product(Base):
     __tablename__ = 'product'
@@ -27,5 +30,7 @@ class Product(Base):
     description = Column(String)
     categories = relationship('Category', secondary = 'category_product')
 
+    def __str__():
+        print(name)
 
 Base.metadata.create_all(engine)
