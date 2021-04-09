@@ -1,10 +1,3 @@
-# product_category
-Projeto de cadastro e categorias em Python
-
-Versão do Python: 3.9.3
-Inicie a execução desta forma: python main.py
-
-
 # Sistema gerenciamento de lojas
 ## Descrição
 Este projeto apresenta um CRUD para operações em lojas com o uso do SQLite. Toda a operação deve ser realizada no pronpt de comando.

@@ -52,9 +52,6 @@ def data_product(name, description, value, categories_list):
 
 def list_of_product():
     '''
-        TODO: refatorar
-    '''
-    '''
         Desciption: Deve receber um projeto e salvar no BD.
     '''
     try:
@@ -71,6 +68,3 @@ def list_of_product():
 
     finally:
         session.close()
-
-if __name__ == '__main__':
-    create_product()
