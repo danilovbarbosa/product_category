@@ -1,6 +1,7 @@
 from category import list_of_category
 from models import Product, Category, engine
 from sqlalchemy.orm import sessionmaker
+from category import filter_category
 Session = sessionmaker(bind = engine)
 
 
@@ -41,22 +42,6 @@ def data_product(name, description, value, id_category):
     finally:
         session.close()
 
-def filter_category(id_category):
-    try:
-        session = Session()
-        result = session.query(Category).filter(Category.id==id_category)
-
-        if (result.count()) == 1:
-            category = result[0]
-            session.close()
-            return category
-
-    except:
-        session.rollback()
-        raise Exception("Erro, ao filtrar categoria.")
-
-    finally:
-        session.close()
 
 def list_of_product():
     '''
@@ -81,4 +66,4 @@ def list_of_product():
         session.close()
 
 if __name__ == '__main__':
-    list_of_product()
+    create_product()
