@@ -1,22 +1,37 @@
+from models import Category
+from sqlalchemy import create_engine
+engine = create_engine('sqlite:///shop.db', echo = True)
+from sqlalchemy.orm import sessionmaker
+Session = sessionmaker(bind = engine)
+
 def create_category():
     name = input('Informe um nome para a sua categoria: ')
     description = input('Informe uma descrição para esta categoria: ')
-    register_category = f'{name},{description}'
-    data_category(register_category)
+    new_category = Category(name = name, description = description)
+    data_category(new_category)
 
+def data_category(category):
+    try:
+        session = Session()
+        session.add(category)
+        session.commit()
+    except:
+        session.rollback()
+        raise Exception("Erro, ao adicionar categoria")
+    finally:
+        session.close()
 
-def data_category(category_object):
-    new_category = str(category_object) + '\n'
-    data = open('categories.txt', 'a')
-    data.write(new_category)
-    print('ok')
 
 
 def list_of_category():
-    list_categories = open('categories.txt', 'r')
-    print('\nCATEGORIAS:\n')
-    count = 0
-    for category in list_categories:
-        count += 1
-        items_category = category.split(',')
-        print(f'Código: {count}\nNome: {items_category[0]}\nDescrição: {items_category[1]}\n')
+    try:
+        session = Session()
+        all_categories = session.query(Category).all()
+        print('\nCATEGORIAS:\n')
+        for row in all_categories:
+            print ("Nome:",row.name, "Descrição:",row.description)
+    except:
+        raise Exception("Erro, ao adicionar categoria")
+    finally:
+        session.close()
+
