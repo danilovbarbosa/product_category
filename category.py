@@ -1,8 +1,17 @@
+from models import Category
+from sqlalchemy import create_engine
+engine = create_engine('sqlite:///shop.db', echo = True)
+from sqlalchemy.orm import sessionmaker
+
+
 def create_category():
     name = input('Informe um nome para a sua categoria: ')
     description = input('Informe uma descrição para esta categoria: ')
-    register_category = f'{name},{description}'
-    data_category(register_category)
+    new_category = Category(name = name, description = description)
+    Session = sessionmaker(bind = engine)
+    session = Session()
+    session.add(new_category)
+    session.commit()
 
 
 def data_category(category_object):
@@ -13,10 +22,9 @@ def data_category(category_object):
 
 
 def list_of_category():
-    list_categories = open('categories.txt', 'r')
     print('\nCATEGORIAS:\n')
-    count = 0
-    for category in list_categories:
-        count += 1
-        items_category = category.split(',')
-        print(f'Código: {count}\nNome: {items_category[0]}\nDescrição: {items_category[1]}\n')
+    Session = sessionmaker(bind = engine)
+    session = Session()
+    all_categories = session.query(Category).all()
+    for row in all_categories:
+        print ("Nome:",row.name, "Descrição:",row.description)
