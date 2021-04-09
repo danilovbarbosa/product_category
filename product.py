@@ -4,6 +4,19 @@ from category import filter_category, list_of_category
 Session = sessionmaker(bind = engine)
 
 
+def choosing_category():
+    categories_list = []
+    aux = True
+    
+    while aux:
+        categories_list.append(int(input('Digite o código da categoria: ')))
+        finish_choosing = input("Deseja incluir mais uma categoria? [s/n]")
+        if finish_choosing == 'n' or finish_choosing == 'N':
+            aux = False
+    
+    return categories_list
+
+
 def create_product():
     '''
         User Story: Como usuário, eu quero criar um produto para tê-lo registrado.
@@ -16,12 +29,7 @@ def create_product():
     value = float(input('Digite o valor do produto R$ '))
     list_of_category()
 
-    choosing_category = True
-    while choosing_category:
-        categories_list.append(int(input('Digite o código da categoria: ')))
-        finish_choosing = input("Deseja incluir mais uma categoria? [s/n]")
-        if finish_choosing == 'n' or finish_choosing == 'N':
-                    choosing_category = False
+    categories_list = choosing_category()
 
     data_product(name, description, value, categories_list)
 
@@ -56,15 +64,24 @@ def list_of_product():
     '''
     try:
         session = Session()
-        all_products = session.query.filter(Product.categories.any(id_category=category.id)).all()
+        all_products = session.query(Product).all()
         
         print('\nPRODUTOS:\n')
-
-        for row in all_products:
-            print ("Nome:",row.name, "Descrição:",row.description, "Preço:", row.price, "Categorias:", row.categories)
+        _print_products(all_products)
 
     except:
         raise Exception("Erro, ao listar produtos")
 
     finally:
         session.close()
+
+
+def _print_products(all_products):
+    for row in all_products:
+        print ("Nome:",row.name, "; Descrição:",row.description, "; Preço:", row.value)
+        count = 0
+        for row_category in row.categories:
+            count = count + 1
+            print (f"Categoria {count}:", row_category.name)
+        
+        print("\n")

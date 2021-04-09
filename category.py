@@ -1,6 +1,6 @@
 from models import Category
 from sqlalchemy import create_engine
-engine = create_engine('sqlite:///shop.db', echo = True)
+from models import engine
 from sqlalchemy.orm import sessionmaker
 Session = sessionmaker(bind = engine)
 
