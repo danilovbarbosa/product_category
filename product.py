@@ -90,7 +90,6 @@ def _print_categories(categories):
         função "privada"
     '''
     count = 0
-
     for row_category in categories:
         count = count + 1
         print (f"Categoria {count}:", row_category.name)
