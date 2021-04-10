@@ -20,16 +20,12 @@ def choosing_category():
     return categories_list
 
 
-def create_product():
+def create_product(name, description, value):
     '''
         User Story: Como usuário, eu quero criar um produto para tê-lo registrado.
         Desciption: Deve ler name, description, value, category; criar um produto e registrar no BD.
     '''
 
-    categories_list = []
-    name = input('Digite o nome do produto: ')
-    description = input('Digite a descrição do produto: ')
-    value = float(input('Digite o valor do produto R$ '))
     list_of_category()
 
     categories_list = choosing_category()
@@ -80,11 +76,21 @@ def list_of_product():
 
 
 def _print_products(all_products):
+    '''
+        função "privada"
+    '''
     for row in all_products:
         print ("Nome:",row.name, "; Descrição:",row.description, "; Preço:", row.value)
-        count = 0
-        for row_category in row.categories:
-            count = count + 1
-            print (f"Categoria {count}:", row_category.name)
-        
+        _print_categories(row.categories)
         print("\n")
+
+
+def _print_categories(categories):
+    '''
+        função "privada"
+    '''
+    count = 0
+
+    for row_category in categories:
+        count = count + 1
+        print (f"Categoria {count}:", row_category.name)

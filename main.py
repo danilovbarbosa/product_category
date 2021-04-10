@@ -45,13 +45,18 @@ def start():
 
 def get_function_for_number(number):
     if number == 1:
-        create_category()
+        name = input('Informe um nome para a sua categoria: ')
+        description = input('Informe uma descrição para esta categoria: ')
+        create_category(name, description)
 
     elif number == 2:
         list_of_category()
 
     elif number == 3:
-        create_product()
+        name = input('Digite o nome do produto: ')
+        description = input('Digite a descrição do produto: ')
+        value = float(input('Digite o valor do produto R$ '))
+        create_product(name, description, value)
 
     elif number == 4:
         list_of_product()
