@@ -3,6 +3,7 @@ from settings import engine
 from sqlalchemy.orm import sessionmaker
 from category import filter_category, list_of_category
 
+
 Session = sessionmaker(bind = engine)
 
 
