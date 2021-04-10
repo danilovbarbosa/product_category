@@ -1,6 +1,8 @@
-from models import Product, Category, engine
+from models import Product, Category
+from settings import engine
 from sqlalchemy.orm import sessionmaker
 from category import filter_category, list_of_category
+
 Session = sessionmaker(bind = engine)
 
 

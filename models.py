@@ -1,6 +1,6 @@
-from sqlalchemy import create_engine, ForeignKey, Column, Integer, String, Float
-engine = create_engine('sqlite:///shop.db', echo = False)
+from sqlalchemy import ForeignKey, Column, Integer, String, Float
 from sqlalchemy.ext.declarative import declarative_base
+from settings import engine
 Base = declarative_base()
 from sqlalchemy.orm import relationship
 

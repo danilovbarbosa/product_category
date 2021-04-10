@@ -1,7 +1,8 @@
 from models import Category
 from sqlalchemy import create_engine
-from models import engine
+from settings import engine
 from sqlalchemy.orm import sessionmaker
+
 Session = sessionmaker(bind = engine)
 
 def create_category():
