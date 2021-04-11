@@ -52,15 +52,16 @@ def get_function_for_number(number):
 
     elif number == 2:
         list_of_category()
+
         id_category = input('Informe o id para a sua categoria: ')
         object_category = filter_category(id_category)
 
         if filter_category(id_category) != None:
             print(f"Nome: {object_category.name} e descrição: {object_category.description}")
 
-            # name = input('Informe o novo nome para a sua categoria: ')
-            # description = input('Informe uma nova descrição para esta categoria: ')
-            # update_category(object_category, name, description)
+            name = input('Informe o novo nome para a sua categoria: ')
+            description = input('Informe uma nova descrição para esta categoria: ')
+            update_category(id_category, name, description)
         else:
             raise Exception("Erro, id não registrado.")
 
