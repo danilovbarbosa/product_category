@@ -21,24 +21,28 @@ def show_menu():
     ''')
 
 
-def get_choice():
+def get_typed_option():
     show_menu()
     choice = int(input("Digite o seu número: "))
     return choice
 
 
+def set_option(number):
+    if number in range(1, 6):
+        return number
+
+    elif number == 0:
+        print('Encerrando a execução.')
+        sys.exit()
+
+    else:
+        print('Opção não encontrada.')
+
+
 def start():
     try:
-        number = get_choice()
-        if number in range(1, 6):
-            return number
-
-        elif number == 0:
-            print('Encerrando a execução.')
-            sys.exit()
-
-        else:
-            print('Opção não encontrada.')
+        number = get_typed_option()
+        return set_option(number)
 
     except Exception as e:
         print(e)
