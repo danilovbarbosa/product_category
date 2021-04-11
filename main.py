@@ -44,6 +44,21 @@ def start():
         print(e)
 
 
+def _print_categoria(object_category):
+    print(f"Nome: {object_category.name} e descrição: {object_category.description}")
+
+
+def _verify_and_update_category(id_category, object_category):
+    if filter_category(id_category) != None:
+        _print_categoria(object_category)
+
+        name = input('Informe o novo nome para a sua categoria: ')
+        description = input('Informe uma nova descrição para esta categoria: ')
+        update_category(id_category, name, description)
+    else:
+        raise Exception("Erro, id não registrado.")
+
+
 def get_function_for_number(number):
     if number == 1:
         name = input('Informe um nome para a sua categoria: ')
@@ -55,15 +70,7 @@ def get_function_for_number(number):
 
         id_category = input('Informe o id para a sua categoria: ')
         object_category = filter_category(id_category)
-
-        if filter_category(id_category) != None:
-            print(f"Nome: {object_category.name} e descrição: {object_category.description}")
-
-            name = input('Informe o novo nome para a sua categoria: ')
-            description = input('Informe uma nova descrição para esta categoria: ')
-            update_category(id_category, name, description)
-        else:
-            raise Exception("Erro, id não registrado.")
+        _verify_and_update_category(id_category, object_category)
 
     elif number == 3:
         list_of_category()
