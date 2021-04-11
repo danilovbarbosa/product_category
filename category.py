@@ -23,6 +23,8 @@ def data_category(category):
     finally:
         session.close()
 
+def update_category():
+    pass
 
 def list_of_category():
     try:
