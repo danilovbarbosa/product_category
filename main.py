@@ -13,9 +13,10 @@ def show_menu():
     ------------------------- 
     1- Cadastrar categoria.
     2- Atualizar categoria.
-    3- Listas categorias.
-    4- Cadastrar produto.
-    5- Listar produtos.
+    3- Remover categoria.
+    4- Listas categorias.
+    5- Cadastrar produto.
+    6- Listar produtos.
     0- Sair do programa.   
     -------------------------  
     ''')
@@ -63,6 +64,16 @@ def _verify_and_update_category(id_category, object_category):
         raise Exception("Erro, id não registrado.")
 
 
+def _remove_category(id_category, object_category):
+    if filter_category(id_category) != None:
+        _print_categoria(object_category)
+
+        remove_category(id_category)
+        print("Categoria removida.")
+    else:
+        raise Exception("Erro, id não registrado.")
+
+
 def get_function_for_number(number):
     if number == 1:
         name = input('Informe um nome para a sua categoria: ')
@@ -72,20 +83,27 @@ def get_function_for_number(number):
     elif number == 2:
         list_of_category()
 
-        id_category = input('Informe o id para a sua categoria: ')
+        id_category = input('Informe o id para a sua categoria para alterar: ')
         object_category = filter_category(id_category)
         _verify_and_update_category(id_category, object_category)
-
+    
     elif number == 3:
         list_of_category()
 
+        id_category = input('Informe o id para a sua categoria para remover: ')
+        object_category = filter_category(id_category)
+        _remove_category(id_category, object_category)
+
     elif number == 4:
+        list_of_category()
+
+    elif number == 5:
         name = input('Digite o nome do produto: ')
         description = input('Digite a descrição do produto: ')
         value = float(input('Digite o valor do produto R$ '))
         create_product(name, description, value)
 
-    elif number == 5:
+    elif number == 6:
         list_of_product()
 
 

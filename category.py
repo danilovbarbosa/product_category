@@ -24,6 +24,20 @@ def data_category(category):
         session.close()
 
 
+def remove_category(id_category):
+    try:
+        session = Session()
+
+        session.query(Category).filter(Category.id==id_category).delete()
+        
+        session.commit()
+        
+    except:
+        raise Exception("Erro, ao atualizar a categoria.")
+    finally:
+        session.close()
+
+
 def update_category(id_category, name, description):
     try:
         session = Session()
